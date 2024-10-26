@@ -32,7 +32,7 @@ import java.io.IOException;
 
 public class LandmarkFragment extends Fragment {
 
-    private static final String TAG = "";  // Tag for debugging
+    private static final String TAG = "";
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageView;
     private TextView txtLandmarkResult;
@@ -84,7 +84,6 @@ public class LandmarkFragment extends Fragment {
             Log.w(TAG, "Image selection failed or canceled");
         }
     }
-    //Method for detecting landmarks
     private void detectLandmark(Bitmap bitmap) {
         Log.d(TAG, "detectLandmark called");
 
@@ -99,7 +98,6 @@ public class LandmarkFragment extends Fragment {
         String base64encoded = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
         Log.d(TAG, "Bitmap converted to Base64 string for landmark detection");
 
-        // Create a JSON request for landmark detection
         JsonObject request = new JsonObject();
         JsonObject image = new JsonObject();
         image.add("content", new JsonPrimitive(base64encoded));
@@ -118,7 +116,6 @@ public class LandmarkFragment extends Fragment {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Firebase function call successful");
-                        // Task completed successfully, handle the response
                         StringBuilder resultText = new StringBuilder();
                         JsonArray annotations = task.getResult().getAsJsonArray();
                         for (JsonElement label : annotations.get(0).getAsJsonObject().get("landmarkAnnotations").getAsJsonArray()) {
@@ -130,7 +127,6 @@ public class LandmarkFragment extends Fragment {
                         txtLandmarkResult.setText(resultText.toString());
                         Log.d(TAG, "Landmark detection result: " + resultText.toString());
                     } else {
-                        // Handle failure
                         Exception e = task.getException();
                         Log.d(TAG, "Firebase function call failed", e);
                         if (e instanceof FirebaseFunctionsException) {
@@ -152,15 +148,12 @@ public class LandmarkFragment extends Fragment {
         JsonObject uploadRequest = new JsonObject();
         uploadRequest.add("image", new JsonPrimitive(base64encoded));
 
-        // Call the Firebase Function to upload the image
         uploadImageToFirebase(uploadRequest.toString())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Image upload successful");
-                        // Handle the successful upload if needed
                     } else {
                         Log.d(TAG, "Image upload failed", task.getException());
-                        // Handle the failure
                     }
                 });
     }
