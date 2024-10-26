@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HotelApp</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">password</string>
+    <string name="log_in">Log in</string>
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
+    <string name="registration1">Registration</string>
+    <string name="register1">Register</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="click_to_register">Click to register</string>
+    <string name="log_out">Log Out</string>
+    <string name="textview">TextView</string>
+</resources>

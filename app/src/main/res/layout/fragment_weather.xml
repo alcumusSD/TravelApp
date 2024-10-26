@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/zipCodeEditText"
+        android:layout_width="395dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Enter ZIP Code"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/zipCodeEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:text="Submit" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="402dp"
+        android:layout_below="@+id/locTextView"
+        android:layout_marginTop="57dp" />
+
+    <TextView
+        android:id="@+id/weatherTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submitBtn"
+        android:layout_marginLeft="25dp"
+        android:padding="16dp"
+        android:text="CURRENT TEMP: "
+        android:textSize="25dp"></TextView>
+
+    <TextView
+        android:id="@+id/latTextView"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/weatherTextView"
+        android:layout_marginLeft="25dp"
+        android:text="LATITUDE: " />
+
+    <TextView
+        android:id="@+id/lonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/latTextView"
+        android:layout_marginLeft="25dp"
+        android:padding="16dp"
+
+        android:text="LONGITUDE: "
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/locTextView"
+        android:textSize="25dp"
+        android:padding="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lonTextView"
+        android:layout_marginLeft="25dp"
+        android:text="LOCATION:" />
+
+    <TextView
+        android:id="@+id/quoteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locTextView"
+        android:layout_marginLeft="25dp"
+        android:padding="16dp"
+        android:text=""
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/submitBtn"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="100dp"
+
+        />
+
+
+</RelativeLayout>

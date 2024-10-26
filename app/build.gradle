@@ -1,0 +1,59 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
+}
+
+android {
+    namespace 'com.example.hotelapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.hotelapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation libs.firebase.functions
+    implementation 'com.google.firebase:firebase-auth:22.0.0'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+
+    // Required to use `ListenableFuture` from Guava Android for one-shot generation
+    implementation("com.google.guava:guava:31.0.1-android")
+
+    // Required to use `Publisher` from Reactive Streams for streaming operations
+    implementation("org.reactivestreams:reactive-streams:1.0.4")
+    implementation libs.firebase.auth
+    implementation libs.firebase.database
+    implementation libs.vision.common
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+
+
+}
