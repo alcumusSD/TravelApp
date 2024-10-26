@@ -95,14 +95,12 @@ public class WeatherFragment extends Fragment {
         return view;
     }
 
-    // Set adapter for the ListView
     public void setAdapter() {
         adapter = new CustomAdapter(getActivity(), R.layout.adapter_layout, wList);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
-    // AsyncTask to fetch weather data
     public class AsyncThread extends AsyncTask<String, Void, String> {
         private final String zip;
 
@@ -181,10 +179,8 @@ public class WeatherFragment extends Fragment {
                     wList.add(day);
                 }
 
-                // Update the UI
                 setAdapter();
 
-                // Update current weather info
                 JSONObject firstListItem = listArray.getJSONObject(0);
                 JSONObject main = firstListItem.getJSONObject("main");
                 String cTemp = main.getString("temp");
@@ -202,7 +198,6 @@ public class WeatherFragment extends Fragment {
         }
     }
 
-    // WeatherData class to store weather info
     public class WeatherData {
         private final String date;
         private final String minTemp;
@@ -235,7 +230,6 @@ public class WeatherFragment extends Fragment {
         }
     }
 
-    // Custom Adapter for the ListView
     public class CustomAdapter extends ArrayAdapter<WeatherData> {
         private final List<WeatherData> list;
         private final Context context;

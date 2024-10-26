@@ -48,13 +48,11 @@ public class LandmarkFragment extends Fragment {
         imageView = view.findViewById(R.id.imageView);
         txtLandmarkResult = view.findViewById(R.id.txtLandmarkResult);
 
-        // Initialize Firebase Functions
         functions = FirebaseFunctions.getInstance();
         Log.d(TAG, "FirebaseFunctions initialized");
 
         btnSelectImage.setOnClickListener(v -> {
             Log.d(TAG, "Select Image button clicked");
-            // Open gallery to select an image
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -90,14 +88,11 @@ public class LandmarkFragment extends Fragment {
     private void detectLandmark(Bitmap bitmap) {
         Log.d(TAG, "detectLandmark called");
 
-        // Scale down bitmap size to 640px max dimension (Cloud Vision recommendation)
         Bitmap scaledBitmap = scaleBitmapDown(bitmap, 640);
         Log.d(TAG, "Bitmap scaled down");
 
-        // Call the upload method here
         uploadImage(scaledBitmap);
 
-        // Convert bitmap to base64 encoded string
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] imageBytes = byteArrayOutputStream.toByteArray();
@@ -119,7 +114,6 @@ public class LandmarkFragment extends Fragment {
 
         Log.d(TAG, "JSON request created: " + request.toString());
 
-        // Call the Firebase Function to process the image and detect landmarks
         annotateImage(request.toString())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -149,14 +143,12 @@ public class LandmarkFragment extends Fragment {
     }
 
     private void uploadImage(Bitmap bitmap) {
-        // Convert bitmap to base64 encoded string
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] imageBytes = byteArrayOutputStream.toByteArray();
         String base64encoded = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
         Log.d(TAG, "Bitmap converted to Base64 string for upload");
 
-        // Create a JSON request for image upload
         JsonObject uploadRequest = new JsonObject();
         uploadRequest.add("image", new JsonPrimitive(base64encoded));
 
