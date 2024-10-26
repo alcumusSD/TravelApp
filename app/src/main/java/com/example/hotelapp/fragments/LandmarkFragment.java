@@ -84,7 +84,7 @@ public class LandmarkFragment extends Fragment {
             Log.w(TAG, "Image selection failed or canceled");
         }
     }
-
+    //Method for detecting landmarks
     private void detectLandmark(Bitmap bitmap) {
         Log.d(TAG, "detectLandmark called");
 
